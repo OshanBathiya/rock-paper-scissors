@@ -17,40 +17,39 @@ function playRound (humanChoice, computerChoice) {
     switch (humanChoice) {
         case computerChoice:
             console.log("It's a Draw!");
-            break;
+            return -1;
         
         case "rock":
             if (computerChoice === "scissor") {
                 console.log("You Win! Rock beats Scissor");
-                humanScore++;
+                return 1;
             } else {
                 console.log("You Lose! Paper beats Rock");
-                humanScore++;
+                return 0;
             }
-            break;
+            console.log("DID i reach here??")
 
         case "paper":
             if (computerChoice === "rock") {
                 console.log("You Win! Paper beats Rock");
-                humanScore++;
+                return 1;
             } else {
                 console.log("You Lose! Scissor beats Paper");
-                humanScore++;
+                return 0;
             }
-            break;
 
         case "scissor":
             if (computerChoice === "paper") {
                 console.log("You Win! Scissor beats Paper");
-                humanScore++;
+                return 1;
             } else {
                 console.log("You Lose! Rock beats Scissor");
-                humanScore++;
+                return 0;
             }
-            break;
         
         default:
             console.log("invalid input");
+            return -2;
     }
 }
 const computerSelection = getComputerChoice();
@@ -59,7 +58,7 @@ const humanSelection = getHumanChoice();
 console.log("humanSelection: " + humanSelection);
 console.log("computerSelection: " + computerSelection);
 
-playRound(humanSelection, computerSelection)
+console.log(playRound(humanSelection, computerSelection));
 
 console.log("humanScore: " + humanScore);
 console.log("computerScore: " + computerScore);
