@@ -1,1 +1,1 @@
-# rock-paper-scissors
+# rock-paper-scissors game to play in the browser console
