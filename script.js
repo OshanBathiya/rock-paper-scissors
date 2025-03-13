@@ -1,6 +1,3 @@
-let humanScore = 0;
-let computerScore = 0;
-
 function getComputerChoice () {
     const randomNo = Math.random()*100;
 
@@ -27,7 +24,6 @@ function playRound (humanChoice, computerChoice) {
                 console.log("You Lose! Paper beats Rock");
                 return 0;
             }
-            console.log("DID i reach here??")
 
         case "paper":
             if (computerChoice === "rock") {
@@ -52,13 +48,41 @@ function playRound (humanChoice, computerChoice) {
             return -2;
     }
 }
-const computerSelection = getComputerChoice();
-const humanSelection = getHumanChoice();
 
-console.log("humanSelection: " + humanSelection);
-console.log("computerSelection: " + computerSelection);
+function playGame () {
+    let humanScore = 0;
+    let computerScore = 0;
+    let computerSelection;
+    let humanSelection;
 
-console.log(playRound(humanSelection, computerSelection));
+    for (i=0; i<5; i++) {
+        computerSelection = getComputerChoice();
+        humanSelection = getHumanChoice();
+        
+        console.log("Your Selection: " + humanSelection);
+        console.log("Computer's Selection: " + computerSelection);
+    
+        const result = playRound(humanSelection, computerSelection);
+    
+        if (result === 1) {
+            humanScore++;
+        } else if (result === 0) {
+            computerScore++;
+        } else {
+            continue;
+        } 
+    }
+    
+    console.log("Your Score: " + humanScore);
+    console.log("Computer's Score: " + computerScore);
 
-console.log("humanScore: " + humanScore);
-console.log("computerScore: " + computerScore);
+    if (humanScore === computerScore) {
+        console.log("It's a draw!!");
+    } else if (humanScore > computerScore) {
+        console.log("You Win the Game!!") 
+    } else {
+        console.log("You Lost the Game! Try again");
+    }
+}
+
+playGame();
