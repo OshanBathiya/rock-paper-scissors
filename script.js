@@ -85,4 +85,8 @@ function playGame () {
     }
 }
 
-playGame();
+const playerChoice = document.querySelector("#playerBtn");
+
+playerChoice.addEventListener("click", (event) => {
+    playRound(event.target.value, getComputerChoice());
+});
