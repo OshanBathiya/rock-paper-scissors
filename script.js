@@ -1,8 +1,15 @@
-const humanChoice = document.querySelector("#humanBtn");
-const result = document.querySelector("#result");
+const humanInputBtn = document.querySelector("#humanInputBtn");
+const displayRoundResult = document.querySelector("#displayRoundResult");
+const displayHumanScore = document.querySelector("#displayHumanScore");
+const displayComputerScore = document.querySelector("#displayComputerScore");
+const displayWinner = document.querySelector("#displayWinner");
 
-humanChoice.addEventListener("click", (event) => {
-    playRound(event.target.value, getComputerChoice());
+let humanScore = 0;
+let computerScore = 0;
+
+humanInputBtn.addEventListener("click", (event) => {
+    const roundResult = playRound(event.target.value, getComputerChoice());
+    announceWinner(roundResult);
 });
 
 function getComputerChoice () {
@@ -14,74 +21,64 @@ function getComputerChoice () {
 function playRound (humanChoice, computerChoice) {
     switch (humanChoice) {
         case computerChoice:
-            result.textContent = "It's a Draw!";
+            displayRoundResult.textContent = "It's a Draw!";
             return -1;
         
         case "rock":
             if (computerChoice === "scissor") {
-                result.textContent = "You Win! Rock beats Scissor";
+                displayRoundResult.textContent = "You Win! Rock beats Scissor";
                 return 1;
             } else {
-                result.textContent = "You Lose! Paper beats Rock";
+                displayRoundResult.textContent = "You Lose! Paper beats Rock";
                 return 0;
             }
 
         case "paper":
             if (computerChoice === "rock") {
-                result.textContent = "You Win! Paper beats Rock";
+                displayRoundResult.textContent = "You Win! Paper beats Rock";
                 return 1;
             } else {
-                result.textContent = "You Lose! Scissor beats Paper";
+                displayRoundResult.textContent = "You Lose! Scissor beats Paper";
                 return 0;
             }
 
         case "scissor":
             if (computerChoice === "paper") {
-                result.textContent = "You Win! Scissor beats Paper";
+                displayRoundResult.textContent = "You Win! Scissor beats Paper";
                 return 1;
             } else {
-                result.textContent = "You Lose! Rock beats Scissor";
+                displayRoundResult.textContent = "You Lose! Rock beats Scissor";
                 return 0;
             }
         
         default:
-            result.textContent = "invalid input";
+            console.log("invalid input");
             return -2;
     }
 }
 
-function playGame () {
-    let humanScore = 0;
-    let computerScore = 0;
-    let computerSelection;
-    let humanSelection;
+function announceWinner (result) {
+    if (humanScore >= 5 || computerScore >=5) {
+        humanScore = 0;
+        computerScore = 0;
+        displayWinner.textContent = ""; 
+    }
 
-    for (i=0; i<5; i++) {
-        computerSelection = getComputerChoice();
-        humanSelection = getHumanChoice();
-        
-        console.log("Your Selection: " + humanSelection);
-        console.log("Computer's Selection: " + computerSelection);
-    
-        const result = playRound(humanSelection, computerSelection);
-    
-        if (result === 1) {
-            humanScore++;
-        } else if (result === 0) {
-            computerScore++;
-        } else {
-            continue;
-        } 
+    if (result === 1) {
+        humanScore++;
+    } else if (result === 0) {
+        computerScore++;
     }
     
-    console.log("Your Score: " + humanScore);
-    console.log("Computer's Score: " + computerScore);
+    displayHumanScore.textContent = "Your Score: " + humanScore;
+    displayComputerScore.textContent = "Computer's Score: " + computerScore;
 
-    if (humanScore === computerScore) {
-        console.log("It's a draw!!");
-    } else if (humanScore > computerScore) {
-        console.log("You Win the Game!!") 
-    } else {
-        console.log("You Lost the Game! Try again");
+    if (humanScore >= 5) {
+        displayWinner.textContent = "You Win the Game!!"; 
     }
+
+    if (computerScore >= 5) {
+        displayWinner.textContent = "You Lost the Game! Try again"; 
+    }
+
 }
