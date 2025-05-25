@@ -3,6 +3,7 @@ const displayRoundResult = document.querySelector("#displayRoundResult");
 const displayHumanScore = document.querySelector("#displayHumanScore");
 const displayComputerScore = document.querySelector("#displayComputerScore");
 const displayWinner = document.querySelector("#displayWinner");
+const winnerBox = document.querySelector("#winner-box");
 
 let humanScore = 0;
 let computerScore = 0;
@@ -63,6 +64,7 @@ function announceWinner (result) {
         humanScore = 0;
         computerScore = 0;
         displayWinner.textContent = ""; 
+        winnerBox.style.display = "none";
     }
 
     if (result === 1) {
@@ -72,14 +74,16 @@ function announceWinner (result) {
     }
     
     displayHumanScore.textContent = "Your Score: " + humanScore;
-    displayComputerScore.textContent = "Computer's Score: " + computerScore;
+    displayComputerScore.textContent = "My Score: " + computerScore;
 
     if (humanScore >= 5) {
-        displayWinner.textContent = "You Win the Game!!"; 
+        displayWinner.textContent = "You Won the Game!!";
+        winnerBox.style.display = "block"; 
     }
 
     if (computerScore >= 5) {
         displayWinner.textContent = "You Lost the Game! Try again"; 
+        winnerBox.style.display = "block"; 
     }
 
 }
