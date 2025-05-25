@@ -53,15 +53,15 @@ button:hover {
 }
 
 #rockBtn {
-    background-image: url('img/rock.png');
+    background-image: url('img/rock.jpg');
 }
 
 #paperBtn {
-    background-image: url('img/paper.png');
+    background-image: url('img/paper.jpg');
 }
 
 #scissorBtn {
-    background-image: url('img/scissor.png');
+    background-image: url('img/scissor.jpg');
 }
 
 #result-box {
