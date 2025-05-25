@@ -1,4 +1,4 @@
-const humanInputBtn = document.querySelector("#humanInputBtn");
+const inputBtns = document.querySelector("#inputBtns");
 const displayRoundResult = document.querySelector("#displayRoundResult");
 const displayHumanScore = document.querySelector("#displayHumanScore");
 const displayComputerScore = document.querySelector("#displayComputerScore");
@@ -7,7 +7,8 @@ const displayWinner = document.querySelector("#displayWinner");
 let humanScore = 0;
 let computerScore = 0;
 
-humanInputBtn.addEventListener("click", (event) => {
+inputBtns.addEventListener("click", (event) => {
+    console.log(event);
     const roundResult = playRound(event.target.value, getComputerChoice());
     announceWinner(roundResult);
 });

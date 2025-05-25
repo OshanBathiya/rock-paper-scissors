@@ -27,3 +27,39 @@ h1 {
     font-weight: 900;
     font-size: 70px;
 }
+
+#inputBtns {
+    display: flex;
+    margin: 60px 120px;
+    padding: 30px;
+    align-items: center;
+    gap: 25px;
+}
+
+button {
+    flex: auto;
+    background-size: contain;
+    background-color: white;
+    background-position: center;
+    min-height: 250px;
+    border-radius: 10px;
+    border: 4px dashed black;
+    padding: 0;
+    background-repeat: no-repeat;
+}
+
+button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#rockBtn {
+    background-image: url('img/rock.png');
+}
+
+#paperBtn {
+    background-image: url('img/paper.png');
+}
+
+#scissorBtn {
+    background-image: url('img/scissor.png');
+}
